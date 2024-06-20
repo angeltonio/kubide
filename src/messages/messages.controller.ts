@@ -22,6 +22,9 @@ export class MessagesController {
 
   @Get('send')
   @Auth()
+  @ApiOperation({
+    summary: 'Mostrar los mensajes enviados del usuario logueado',
+  })
   findSendMessages(
     @Query() paginationDto: PaginationDto,
     @GetUser() user: IUser,
@@ -31,6 +34,9 @@ export class MessagesController {
 
   @Get('receive')
   @Auth()
+  @ApiOperation({
+    summary: 'Mostrar los un mensajes recibidos del usuario logueado',
+  })
   findReceiveMessages(
     @Query() paginationDto: PaginationDto,
     @GetUser() user: IUser,
