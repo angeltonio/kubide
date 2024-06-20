@@ -1,6 +1,6 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { Auth } from 'src/common/decorators';
+import { Auth, GetUser } from 'src/common/decorators';
 import { PaginationDto } from 'src/common/dto/pagination.dto';
 import { IUser } from 'src/common/interfaces/user.interface';
 import { NotificationsService } from './notifications.service';

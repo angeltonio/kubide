@@ -1,0 +1,384 @@
+_type: export
+__export_format: 4
+__export_date: 2024-06-20T12:37:58.929Z
+__export_source: insomnia.desktop.app:v2023.5.4
+resources:
+  - _id: req_edb688dafb4249989dbc02684d91c07f
+    parentId: fld_9c8dbeaad9b94ff4ab9b095e1c4c87f5
+    modified: 1718883297628
+    created: 1718877368782
+    url: http://localhost:3000/api/v1/auth/register
+    name: Register
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "name": "John Doe",
+          "email": "dd.doe@example.com",
+          "password": "SecurePassword123!"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: Insomnia/2023.5.4
+    authentication: {}
+    metaSortKey: -1718877368782
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_9c8dbeaad9b94ff4ab9b095e1c4c87f5
+    parentId: wrk_a833ce0787bb423e979e2bfdbe50a528
+    modified: 1718877354824
+    created: 1718877354824
+    name: Auth
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1718877354824
+    _type: request_group
+  - _id: wrk_a833ce0787bb423e979e2bfdbe50a528
+    parentId: null
+    modified: 1718877348198
+    created: 1718877348198
+    name: Kubide
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_6362e1945d9b4648a4cf79d223ba5767
+    parentId: fld_9c8dbeaad9b94ff4ab9b095e1c4c87f5
+    modified: 1718886981304
+    created: 1718877414177
+    url: http://localhost:3000/api/v1/auth/login
+    name: Login
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "email": "ee.doe@example.com",
+          "password": "SecurePassword123!"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: Insomnia/2023.5.4
+    authentication: {}
+    metaSortKey: -1717670007114
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_499584489d944e3f84988922d6d8b8a0
+    parentId: fld_7602251df4d04fe0a7d51058a30f276f
+    modified: 1718877526868
+    created: 1718877496225
+    url: http://localhost:3000/api/v1/users/me
+    name: Me
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: Insomnia/2023.5.4
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1718877496225
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_7602251df4d04fe0a7d51058a30f276f
+    parentId: wrk_a833ce0787bb423e979e2bfdbe50a528
+    modified: 1718877360541
+    created: 1718877360541
+    name: Users
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1718877360541
+    _type: request_group
+  - _id: req_b85fe137b0514c0d8cdb2a195873b260
+    parentId: fld_7602251df4d04fe0a7d51058a30f276f
+    modified: 1718877554556
+    created: 1718877531886
+    url: http://localhost:3000/api/v1/users/update
+    name: Update
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "name": "FFDoe",
+          "email": "f.doe@example.com",
+          "password": "SecurePassword567*",
+          "roles": [
+            "admin",
+            "user"
+          ]
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: Insomnia/2023.5.4
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1718877432503.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_af31d43ddc754a888a30590319646ab6
+    parentId: fld_7602251df4d04fe0a7d51058a30f276f
+    modified: 1718879038575
+    created: 1718878173991
+    url: http://localhost:3000/api/v1/users/activate
+    name: Activate
+    description: ""
+    method: POST
+    body: {}
+    parameters:
+      - id: pair_274cfa8cc9944800abd8bb6e38a0a809
+        name: activate
+        value: "true"
+        description: ""
+        disabled: false
+    headers:
+      - name: User-Agent
+        value: Insomnia/2023.5.4
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1718877464364.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_470fc11a1871425ea3ebfba5ab2fbc8b
+    parentId: fld_7602251df4d04fe0a7d51058a30f276f
+    modified: 1718879814735
+    created: 1718879197711
+    url: http://localhost:3000/api/v1/users/all
+    name: GetAll
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - id: pair_50c537595205401b8f91e291404eec65
+        name: page
+        value: "4"
+        description: ""
+      - id: pair_15cf000c4c2840b2b954ff6ba464b546
+        name: limit
+        value: "2"
+        description: ""
+    headers:
+      - name: User-Agent
+        value: Insomnia/2023.5.4
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1718877480294.625
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_9771e58740f24a8a8cce7a7d3eb834b5
+    parentId: fld_a66916fe222a42c0aefd4f56178d69ec
+    modified: 1718883340575
+    created: 1718881340026
+    url: http://localhost:3000/api/v1/messages
+    name: Create Message
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "to": "1e001877-4ef8-4a86-8a8c-ac7b25bdc4cd",
+        	"content": "Hola Mundo 2"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: Insomnia/2023.5.4
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1718877432503.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_a66916fe222a42c0aefd4f56178d69ec
+    parentId: wrk_a833ce0787bb423e979e2bfdbe50a528
+    modified: 1718881340022
+    created: 1718881340022
+    name: Messages
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1718877357682.5
+    _type: request_group
+  - _id: req_f9ff80a7cf7a45cba4c39e1e10250ef0
+    parentId: fld_a66916fe222a42c0aefd4f56178d69ec
+    modified: 1718882461599
+    created: 1718881963770
+    url: http://localhost:3000/api/v1/messages/send
+    name: Send Messages
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: ""
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: Insomnia/2023.5.4
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1718877400642.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_fc61c198277b4f19bfcb47d08513dd62
+    parentId: fld_a66916fe222a42c0aefd4f56178d69ec
+    modified: 1718882491152
+    created: 1718882431550
+    url: http://localhost:3000/api/v1/messages/receive
+    name: Receive Messages
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: ""
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: Insomnia/2023.5.4
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1718877384712.375
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_576e3d23e6274791a30530a9791f25bf
+    parentId: fld_1504202ad3f14fd19e87f7de02698a91
+    modified: 1718886787133
+    created: 1718886748395
+    url: http://localhost:3000/api/v1/notifications
+    name: GetAll
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: ""
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: Insomnia/2023.5.4
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1718877432503.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_1504202ad3f14fd19e87f7de02698a91
+    parentId: wrk_a833ce0787bb423e979e2bfdbe50a528
+    modified: 1718886748393
+    created: 1718886748393
+    name: Notifications
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1718877356253.25
+    _type: request_group
+  - _id: env_8bf4768dad5808a7d2a9f1525768902ffc7b8687
+    parentId: wrk_a833ce0787bb423e979e2bfdbe50a528
+    modified: 1718877493448
+    created: 1718877348201
+    name: Base Environment
+    data:
+      token: "{% response 'body', 'req_6362e1945d9b4648a4cf79d223ba5767',
+        'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'never', 60 %}"
+    dataPropertyOrder:
+      "&":
+        - token
+    color: null
+    isPrivate: false
+    metaSortKey: 1718877348201
+    _type: environment
+  - _id: jar_8bf4768dad5808a7d2a9f1525768902ffc7b8687
+    parentId: wrk_a833ce0787bb423e979e2bfdbe50a528
+    modified: 1718877348203
+    created: 1718877348203
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar

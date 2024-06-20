@@ -9,11 +9,43 @@ export class NotificationsService {
   constructor(private readonly prismaService: PrismaService) {}
 
   async findAll(paginationDto: PaginationDto, user: IUser) {
-    return this.prismaService.notifications.findMany({
+    const totalPages = await this.prismaService.notifications.count({
       where: {
         ownerId: user.id,
       },
     });
+    const currentPage = paginationDto.page;
+    const perPage = paginationDto.limit;
+    const notifications = await this.prismaService.notifications.findMany({
+      where: {
+        ownerId: user.id,
+      },
+      take: perPage,
+      skip: (currentPage - 1) * perPage,
+    });
+    // AQUI SE ACTUALIZA EL ESTADO DE LAS NOTIFICACIONES A LEIDAS
+    const notificationIds = notifications.map(
+      (notification) => notification.id,
+    );
+    await this.prismaService.notifications.updateMany({
+      where: {
+        id: {
+          in: notificationIds,
+        },
+      },
+      data: {
+        read: true,
+      },
+    });
+
+    return {
+      data: notifications,
+      meta: {
+        total: totalPages,
+        page: currentPage,
+        lastPage: Math.ceil(totalPages / perPage),
+      },
+    };
   }
 
   async create(data: CreateNotificationDto) {
