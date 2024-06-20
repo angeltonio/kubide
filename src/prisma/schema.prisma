@@ -1,0 +1,52 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String?
+  state     Boolean  @default(true)
+  activate  Boolean  @default(true)
+  roles        String[]     @default(["user"])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  fromMessages Message[] @relation("FromUser")
+  toMessages   Message[] @relation("ToUser")
+  notifications Notifications[]
+}
+
+model Message {
+  id        String   @id @default(uuid())
+  content   String
+  from      User     @relation("FromUser", fields: [fromId], references: [id])
+  to        User     @relation("ToUser", fields: [toId], references: [id])
+  fromId    String
+  toId      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+}
+
+model Notifications {
+  id       String   @id @default(uuid())
+  read      Boolean  @default(false)
+  content  String
+  owner   User     @relation(fields: [ownerId], references: [id])
+  ownerId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
